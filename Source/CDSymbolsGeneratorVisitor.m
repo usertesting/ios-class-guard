@@ -78,6 +78,13 @@ static NSString *const lettersSet[maxLettersSet] = {
     ]];
 }
 
+- (void)addSymbolsToBlacklist:(NSArray *)symbols {
+    if (!_forbiddenNames) {
+        _forbiddenNames = [NSMutableSet new];
+    }
+    [_forbiddenNames addObjectsFromArray:symbols];
+}
+
 - (void)willBeginVisiting {
     _protocolNames = [NSMutableSet new];
     _classNames = [NSMutableSet new];
@@ -87,7 +94,9 @@ static NSString *const lettersSet[maxLettersSet] = {
     _ivarNames = [NSMutableSet new];
     _symbols = [NSMutableDictionary new];
     _uniqueSymbols = [NSMutableSet new];
-    _forbiddenNames = [NSMutableSet new];
+    if (!_forbiddenNames) {
+        _forbiddenNames = [NSMutableSet new];
+    }
     _symbolLength = 3;
     _external = NO;
     _ignored = NO;

@@ -20,6 +20,7 @@
 #import "CDSymbolMapper.h"
 #import "CDSystemProtocolsProcessor.h"
 #import "CDdSYMProcessor.h"
+#import "SDKSymbolExtractor.h"
 
 NSString *defaultSymbolMappingPath = @"symbols.json";
 
@@ -411,12 +412,20 @@ int main(int argc, char *argv[])
                             print_usage();
                             exit(3);
                         }
-
+                        
+                        SDKSymbolExtractor *extractor = [[SDKSymbolExtractor alloc] init];
+                        extractor.searchPathState.executablePath = [executablePath stringByDeletingLastPathComponent];
+                        extractor.sdkRoot = classDump.sdkRoot;
+                        extractor.targetArch = targetArch;
+                        [extractor loadFile:file error:&error depth:0];
+                        [extractor collectSymbols];
+                        
                         CDSymbolsGeneratorVisitor *visitor = [CDSymbolsGeneratorVisitor new];
                         visitor.classDump = classDump;
                         visitor.classFilter = classFilter;
                         visitor.ignoreSymbols = ignoreSymbols;
                         visitor.symbolsFilePath = symbolsPath;
+                        [visitor addSymbolsToBlacklist:extractor.symbols.allObjects];
                         [classDump recursivelyVisit:visitor];
 
                         CDXibStoryBoardProcessor *processor = [[CDXibStoryBoardProcessor alloc] init];

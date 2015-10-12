@@ -7,5 +7,7 @@
 @property (nonatomic, readonly) NSString *resultString;
 @property (nonatomic, readonly) NSDictionary *symbols;
 @property(nonatomic, copy) NSString *symbolsFilePath;
+
 - (void)addSymbolsPadding;
+- (void)addSymbolsToBlacklist:(NSArray *)symbols;
 @end
