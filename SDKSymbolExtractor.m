@@ -21,7 +21,7 @@
 
 - (void)collectSymbols {
     for (CDFile *file in self.machOFilesByName.allValues) {
-        if (![file.filename containsString:@"UserTesting"]) {
+        if (![file.filename containsString:@"UserTesting"] && ![file.filename containsString:@"AppCapture"]) {
             [self collectSymbolsFromExecutableAtPath:file.filename];
         }
     }

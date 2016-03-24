@@ -490,7 +490,7 @@ static NSString *const lettersSet[maxLettersSet] = {
 - (void)willVisitObjectiveCProcessor:(CDObjectiveCProcessor *)processor {
     NSString *importBaseName = processor.machOFile.importBaseName;
 
-    if (importBaseName && ![importBaseName containsString:@"UserTesting"]) {
+    if (importBaseName && (![importBaseName containsString:@"UserTesting"] && ![importBaseName containsString:@"AppCapture"])) {
         NSLog(@"Processing external symbols from %@...", importBaseName);
         _external = YES;
     } else {
