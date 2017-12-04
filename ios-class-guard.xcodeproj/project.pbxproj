@@ -91,12 +91,11 @@
 		0194945C1673F8F400A29005 /* CDProtocolUniquer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0194945A1673F8F100A29005 /* CDProtocolUniquer.h */; };
 		0194945D1673F8F400A29005 /* CDProtocolUniquer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0194945B1673F8F200A29005 /* CDProtocolUniquer.m */; };
 		01B02D1113A5B1460047BC53 /* class-dump.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B02D1013A5B1460047BC53 /* class-dump.m */; };
-		01B02D2C13A5B4FE0047BC53 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D1F0B13A5ADC300BF0A67 /* libcrypto.dylib */; };
 		01EB826413A590D9003EDE60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EB826313A590D9003EDE60 /* Foundation.framework */; };
 		0D288C10187BC2EE0026E2A0 /* CDOCClassReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D288C0E187BC2EE0026E2A0 /* CDOCClassReference.h */; };
 		0D288C11187BC2EE0026E2A0 /* CDOCClassReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D288C0F187BC2EE0026E2A0 /* CDOCClassReference.m */; };
-		2C60B4C71BC4E70400C2DC3D /* SDKSymbolExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C60B4C51BC4E70400C2DC3D /* SDKSymbolExtractor.h */; settings = {ASSET_TAGS = (); }; };
-		2C60B4C81BC4E70400C2DC3D /* SDKSymbolExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C60B4C61BC4E70400C2DC3D /* SDKSymbolExtractor.m */; settings = {ASSET_TAGS = (); }; };
+		2C60B4C71BC4E70400C2DC3D /* SDKSymbolExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C60B4C51BC4E70400C2DC3D /* SDKSymbolExtractor.h */; };
+		2C60B4C81BC4E70400C2DC3D /* SDKSymbolExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C60B4C61BC4E70400C2DC3D /* SDKSymbolExtractor.m */; };
 		364BE330F75B155BE0047612 /* CDdSYMProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 364BE390FE4E4819FEB7BCE7 /* CDdSYMProcessor.m */; };
 		364BE6461620A0161AA764C8 /* CDSystemProtocolsProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 364BE69D036E4702894D53AD /* CDSystemProtocolsProcessor.m */; };
 		364BE69E032FC93F586245D4 /* CDSystemProtocolsProcessorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 364BE69F3A3ADC92AFDA50DA /* CDSystemProtocolsProcessorSpec.m */; };
@@ -449,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				670B7972197007120069F751 /* libxml2.dylib in Frameworks */,
-				01B02D2C13A5B4FE0047BC53 /* libcrypto.dylib in Frameworks */,
 				013D1F5A13A5AF6500BF0A67 /* libMachObjC.a in Frameworks */,
 				01EB826413A590D9003EDE60 /* Foundation.framework in Frameworks */,
 			);
@@ -1487,6 +1485,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios-class-guard-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1501,6 +1503,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios-class-guard-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
